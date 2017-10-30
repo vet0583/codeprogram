@@ -1,0 +1,54 @@
+//Я так розумію ти хотів використовувати файли, але якщо ти на початку їх не підключаєш, не потрібно в кінці їх відключати )
+// НЕ ВИКОРИСТОВУЙ в якості лічильника циклу тип int64  - він для компілятора (більшості) не є порядковим, а подібний до типу real 
+// в умові НІХТО НЕ ВКАЗУВАВ не говорив що числа  m i n  будуть записані в порядку зростання :-))) може бути записано 1000 900 
+//у відповіді повинно бути   1000 900 174, а початковий код в такомувипадку нічого б не шукав    ))
+
+program Project1;
+
+var m,n,a,b: longint;
+
+function posln(i:longint):longint;
+   var t:longint;
+     begin
+          t:=1;
+               while i<>1 do
+                begin
+                    if i=1 then begin posln:=t; exit; end;
+                    if i mod 2=0 then i:=i div 2
+                      else i:=i*3+1;
+                    inc(t);
+                end;
+          posln:=t;
+    end;
+
+     procedure check(m,n: longint);
+          var rez,i,rezm, a,b: longint;
+          begin
+              {  наступна частина коду задає порядок перебору по зростанню, оскільки у вхідних даних за умовою вони не обо-
+              вязково будуть такими ))  але виводити потрібно як введено!  }
+          if m>n then
+           begin
+              a:=n;  b:=m;
+           end
+             else
+           begin
+              a:=m;  b:=n;
+           end;
+                // ----------------------
+          rezm:=0;
+               for i:=a to b do
+                begin
+                rez:=posln(i);
+                if rez>rezm then rezm:=rez;
+                end;
+          writeln(m,' ',n,' ',rezm)
+          end;
+
+
+begin
+     while not(eof) do
+      begin
+           readln(m,n);
+           check(m,n);
+      end;
+end.
