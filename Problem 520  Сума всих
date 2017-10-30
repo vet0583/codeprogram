@@ -1,0 +1,14 @@
+program Project1;
+
+var a,b,c  : int64;
+
+begin
+  c := 0;
+    While not(eof) do
+    begin
+        if eoln then readln;
+        read(a);
+        c := c+a;
+    end;
+    writeln(c);
+end.
