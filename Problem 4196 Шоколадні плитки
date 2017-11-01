@@ -1,0 +1,37 @@
+{ ---  1 варіант --- }
+
+var a,b,n, k, s, i: longint;
+function nsd(x,y: longint):longint;
+var c: longint;
+begin
+    while y>0 do
+    begin
+        c:=x mod y;
+        x:=y;
+        y:=c;
+    end;
+ nsd := x;
+end;
+begin
+    readln(a,b,n);
+    k :=a*b;
+    i := n div nsd(n,k);
+ writeln(i);
+end.
+
+
+{ ---  2 варіант --- }
+
+var a,b,n, k, s, i: longint;
+begin
+    readln(a,b,n);
+    k :=a*b;
+    i:=1;
+    s := k;
+    while (s mod n <> 0) do
+    begin
+        s := s+k;
+        inc(i);
+    end;
+ writeln(i);
+end.
