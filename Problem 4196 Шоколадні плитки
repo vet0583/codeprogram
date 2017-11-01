@@ -1,7 +1,7 @@
 { ---  1 варіант --- }
 
 var a,b,n, k, s, i: longint;
-function nsd(x,y: longint):longint;
+function nsd(x,y: longint):longint;  //функція знаходження найбільшого спільного дільника 2 чисел
 var c: longint;
 begin
     while y>0 do
@@ -13,9 +13,10 @@ begin
  nsd := x;
 end;
 begin
-    readln(a,b,n);
-    k :=a*b;
-    i := n div nsd(n,k);
+    readln(a,b,n);    //вводимо дані
+    k :=a*b;            //кількість дольок на 1 плитці
+    i := n div nsd(n,k);        //якщо кількість дольок і кількість учасників мають спільний дільник, 
+                                //значить можна ділити кожну плитку на декілька частин, і відповідно знаходимо кількість плиток
  writeln(i);
 end.
 
@@ -26,12 +27,12 @@ var a,b,n, k, s, i: longint;
 begin
     readln(a,b,n);
     k :=a*b;
-    i:=1;
-    s := k;
+    i:=1;               //кількість плиток
+    s := k;             //поточна кількість дольок = кількості на 1 плитці
     while (s mod n <> 0) do
     begin
-        s := s+k;
-        inc(i);
+        s := s+k;       //додаємо  ще одну плитку (у якій k дольок)
+        inc(i);         //збільш лічильник плиток
     end;
  writeln(i);
 end.
